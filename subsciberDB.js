@@ -1,6 +1,7 @@
 const https = require('https');
-
+tempMap = {};
 var get_subscribers_function = () => {
+
   return new Promise((resolve, reject) => {
     https.get(`https://asarda1.wixsite.com/pay2play/_functions/myFunction/`, (resp) => {
       var subscribers = {}
@@ -18,6 +19,7 @@ var get_subscribers_function = () => {
 
         for(sub of suba) {
           subscribers[sub.steamAccountNo] = sub.balance
+          tempMap[sub.steamAccountNo] = sub["_id"]
         }
         resolve(subscribers)
       });
@@ -33,6 +35,7 @@ var get_subscribers_function = () => {
 
 
 var updateSubscribers = async(stakes) => {
+  new_subs = {};
 
   return new Promise(async(resolve, reject)=>{
     var subscribers = await get_subscribers_function();
@@ -43,8 +46,27 @@ var updateSubscribers = async(stakes) => {
         subscribers[player] = subscribers[player] + stakes[match][player];
 
       }
+
+
     }
 
+    for (sub in subscribers) {
+      new_subs[tempMap[sub]] = subscribers[sub]
+    }
+
+    console.log(new_subs)
+
+
+
+
+    https.put(`https://asarda1.wixsite.com/pay2play/_functions/myUpdate/`, (resp) => {
+      for(update in new_subs) => {
+        //
+      }
+
+    }).on("error", (err) => {
+      reject(err.message);
+    });
     resolve(subscribers)
   });
 }
