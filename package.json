@@ -1,0 +1,17 @@
+{
+  "name": "pay2play-backend",
+  "version": "1.0.0",
+  "description": "Game client behind pay2play",
+  "main": "distributePrize.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "asarda@bu.edu, ssiva@bu.edu",
+  "license": "MIT",
+  "engines": {
+    "node": "8.10.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
