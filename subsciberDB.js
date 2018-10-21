@@ -55,18 +55,6 @@ var updateSubscribers = async(stakes) => {
     }
 
     console.log(new_subs)
-
-
-
-
-    https.put(`https://asarda1.wixsite.com/pay2play/_functions/myUpdate/`, (resp) => {
-      for(update in new_subs) => {
-        //
-      }
-
-    }).on("error", (err) => {
-      reject(err.message);
-    });
     resolve(subscribers)
   });
 }
