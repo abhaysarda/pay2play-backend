@@ -12,6 +12,7 @@
     "node": "8.10.0"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "request": "^2.81.0"
   }
 }
